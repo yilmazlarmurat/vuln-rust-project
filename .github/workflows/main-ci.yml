@@ -14,9 +14,7 @@ on:
 
 jobs:
   call_rust_scan:
-    uses: ./.github/workflows/rust-scan.yml@main # Refer to your reusable workflow.
-                                                  # Use @main if your main branch is called 'main',
-                                                  # or @master if it's 'master', or @<commit_sha> for a specific commit.
+    uses: ./.github/workflows/rust-scan.yml # <--- THIS IS THE CHANGE! Remove @main
     with:
       repo-path: '.' # Pass the input if needed. '.' is your default.
     secrets:

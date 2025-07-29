@@ -4,19 +4,19 @@ name: Main CI Workflow
 on:
   push:
     branches:
-      - main # Trigger this workflow on pushes to the 'main' branch
-      - develop # Or any other branches you want to trigger it on
+      - main
+      - develop
   pull_request:
     branches:
       - main
       - develop
-  workflow_dispatch: # Allows manual triggering of this calling workflow
+  workflow_dispatch:
 
 jobs:
   call_rust_scan:
-    uses: ./.github/workflows/rust-scan.yml # <--- THIS IS THE CHANGE! Remove @main
+    uses: ./.github/workflows/rust-scanner.yml
     with:
-      repo-path: '.' # Pass the input if needed. '.' is your default.
+      repo-path: '.'
     secrets:
       SNYK_SCANNER_TOKEN: ${{ secrets.SNYK_SCANNER_TOKEN }}
       SNYK_SCANNER_REGION: ${{ secrets.SNYK_SCANNER_REGION }}
